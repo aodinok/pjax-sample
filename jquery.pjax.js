@@ -484,7 +484,7 @@ if ('state' in window.history) {
 function onPjaxPopstate(event) {
 
   // Hitting back or forward should override any pending PJAX request.
-  if (!initialPop) {
+  if (!initialPop && (!event.originalEvent || !event.originalEvent.singleSpa)) {
     abortXHR(pjax.xhr)
   }
 
